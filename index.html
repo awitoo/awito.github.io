@@ -56,8 +56,8 @@
         }
 
         .logo img {
-            height: 150px; /* Ajusta el tamaño del logo */
-            margin-right: 20px;
+            height: 40px; /* Ajusta el tamaño del logo */
+            margin-right: 10px;
         }
 
         nav ul {
@@ -94,6 +94,7 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             border: 2px solid var(--primary-color);
             cursor: pointer;
+            text-align: center; /* Asegura que el texto del botón esté centrado */
         }
 
         .btn:hover {
@@ -184,9 +185,10 @@
         }
 
         .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            max-width: 100%; /* Imágenes responsivas */
+            height: 200px; /* Altura fija para consistencia visual */
+            object-fit: cover; /* Recorta la imagen para cubrir el espacio */
+            display: block; /* Elimina espacio extra debajo de la imagen */
         }
 
         .project-card-content {
@@ -371,16 +373,163 @@
         .modal-form p a:hover {
             text-decoration: underline;
         }
+
+        /* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+
+        /* Icono de menú hamburguesa (oculto por defecto en escritorio) */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            color: var(--primary-color);
+            cursor: pointer;
+            margin-left: 20px; /* Espacio entre el logo y el icono */
+        }
+
+        /* Estilos para pantallas pequeñas (ej. móviles) */
+        @media (max-width: 768px) {
+            header .container {
+                flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+                justify-content: space-between; /* Espacia logo y toggle */
+            }
+
+            .logo {
+                font-size: 20px; /* Ajusta el tamaño del logo en móviles */
+            }
+
+            .logo img {
+                height: 35px; /* Ajusta el tamaño de la imagen del logo */
+            }
+
+            /* Mostrar el icono de hamburguesa */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Ocultar la navegación de escritorio por defecto */
+            nav ul {
+                display: none;
+                flex-direction: column; /* Apilar elementos del menú */
+                width: 100%; /* Ocupar todo el ancho */
+                background-color: var(--secondary-color); /* Fondo del menú desplegado */
+                position: absolute; /* Posicionamiento absoluto para el menú desplegado */
+                top: 70px; /* Debajo del header */
+                left: 0;
+                z-index: 99;
+                padding: 10px 0;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            /* Mostrar la navegación cuando tenga la clase 'active' */
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0; /* Elimina margen horizontal */
+                width: 100%; /* Cada ítem ocupa todo el ancho */
+            }
+
+            nav ul li a {
+                color: var(--white-color);
+                padding: 12px 0; /* Aumenta el área de clic */
+                display: block; /* Ocupa todo el ancho del li */
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1); /* Separador entre ítems */
+            }
+            nav ul li:last-child a {
+                border-bottom: none; /* Sin separador en el último ítem */
+            }
+
+            /* Estilos del Hero section */
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 38px; /* Ajuste para móviles */
+            }
+
+            .hero p {
+                font-size: 16px; /* Ajuste para móviles */
+                padding: 0 15px; /* Pequeño padding para no pegar al borde */
+            }
+
+            .hero .btn {
+                width: 80%; /* Botones más anchos */
+                margin-bottom: 10px;
+            }
+            
+            .hero .btn:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Section Titles */
+            .section-title {
+                font-size: 28px;
+            }
+
+            /* How It Works section */
+            .how-it-works {
+                flex-direction: column; /* Apilar los pasos */
+                gap: 30px; /* Más espacio entre ellos */
+            }
+
+            /* Projects Grid */
+            .projects-grid {
+                grid-template-columns: 1fr; /* Una sola columna para proyectos */
+                gap: 25px; /* Espacio entre tarjetas */
+            }
+
+            /* Project Card details */
+            .project-card-content {
+                padding: 20px; /* Un poco menos de padding */
+            }
+            .project-card h3 {
+                font-size: 20px;
+            }
+            .project-card p {
+                font-size: 14px;
+            }
+
+            /* Formularies */
+            #publicar-proyecto .container > div {
+                padding: 25px; /* Ajusta el padding del formulario */
+            }
+        }
+
+        /* Estilos para tablets (entre 769px y 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                width: 95%; /* Un poco más de ancho en tablets */
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr); /* Dos columnas para tablets */
+                gap: 25px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .how-it-works {
+                gap: 15px;
+            }
+
+            nav ul li {
+                margin-left: 15px; /* Espaciado ajustado en nav */
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="#" class="logo">
-                <img src="C:\Users\crist\Desktop\AOPPP\ga\Imagen de WhatsApp 2025-06-18 a las 11.11.02_d32e2548.jpg" alt="Local Invest Logo"> 
-                Easy Fortune
-                
+                <img src="https://via.placeholder.com/40x40?text=LI" alt="Local Invest Logo">
+                Local Invest
             </a>
+            <div class="menu-toggle" id="mobile-menu">&#9776;</div>
             <nav>
                 <ul>
                     <li><a href="#proyectos">Proyectos</a></li>
@@ -396,7 +545,7 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Impulsa tus Sueños, Invierte en Ecuador con Easy Fortune</h1>
+                <h1>Impulsa tus Sueños, Invierte en Ecuador con Local Invest</h1>
                 <p>Conectamos proyectos innovadores con inversores que desean ver crecer a Ecuador. Aporta a iniciativas pequeñas y medianas con montos accesibles.</p>
                 <a href="#proyectos" class="btn">Explorar Proyectos</a>
                 <a href="#publicar-proyecto" class="btn btn-primary">Publicar mi Proyecto</a>
@@ -427,7 +576,7 @@
             <h2 class="section-title">Proyectos Destacados</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="tendencias-proyectos-energias-renovables-ealde.jpg" alt="Proyecto de Energía Renovable">
+                    <img src="https://via.placeholder.com/400x200?text=Energía+Renovable+Ecuador" alt="Proyecto de Energía Renovable">
                     <div class="project-card-content">
                         <h3>Instalación de Paneles Solares Comunitarios</h3>
                         <p>Proyecto para dotar de energía limpia a comunidades rurales en Chimborazo, reduciendo costos y huella de carbono.</p>
@@ -449,7 +598,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="C:\Users\crist\Desktop\AOPPP\ga\Coffee-Journey-Cover.jpg" alt="Cultivo de Café Orgánico">
+                    <img src="https://via.placeholder.com/400x200?text=Café+Orgánico+Loja" alt="Cultivo de Café Orgánico">
                     <div class="project-card-content">
                         <h3>Expansión Finca de Café Orgánico Loja</h3>
                         <p>Aumento de la producción de café orgánico de especialidad en Loja, con enfoque en comercio justo y sostenibilidad.</p>
@@ -471,7 +620,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="C:\Users\crist\Desktop\AOPPP\ga\618e5457fb02e5b0f6a06cbef87c123e_xl.jpg" alt="Taller de Artesanías">
+                    <img src="https://via.placeholder.com/400x200?text=Artesanía+Indígena" alt="Taller de Artesanías">
                     <div class="project-card-content">
                         <h3>Fortalecimiento Taller Artesanal Kichwa</h3>
                         <p>Inversión en maquinaria y materiales para un taller de artesanías tradicionales Kichwa, promoviendo la cultura.</p>
@@ -561,7 +710,7 @@
     </div>
 
     <script>
-        // Lógica para abrir y cerrar el modal
+        // Lógica para abrir y cerrar el modal de Inicio de Sesión
         const loginModal = document.getElementById('loginModal');
         const loginBtn = document.getElementById('loginBtn');
         const closeButton = document.querySelector('.close-button');
@@ -580,6 +729,17 @@
                 loginModal.style.display = 'none';
             }
         }
+
+        // Lógica para el menú hamburguesa (navegación móvil)
+        const mobileMenuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('nav ul');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navList.classList.toggle('active'); // Alterna la clase 'active' para mostrar/ocultar el menú
+            });
+        }
     </script>
 </body>
 </html>
+
